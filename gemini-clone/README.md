@@ -3,7 +3,7 @@
 
 A powerful AI chatbot clone inspired by Google’s Gemini, built using **React.js** and integrated with **Generative AI APIs**. This project demonstrates how to create a fully functional chat interface that dynamically generates and displays responses from a large language model.
 
----
+
 
 ## 🌟 Features
 
@@ -14,7 +14,13 @@ A powerful AI chatbot clone inspired by Google’s Gemini, built using **React.j
 - ✅ HTML-rendered AI responses (bold, line breaks, etc.)
 - ✅ Responsive layout and clean CSS structure
 
----
+## 🚀 Technologies Used
+
+- ⚛️ **React.js**
+- 💬 **Generative AI API** (e.g., Gemini / OpenAI-like)
+- 🎨 **CSS** for styling (can be replaced with Tailwind or others)
+- 🌐 **JSX & React Context API** for state management
+- 🖼️ Asset-based icon management
 
 # React + Vite
 
