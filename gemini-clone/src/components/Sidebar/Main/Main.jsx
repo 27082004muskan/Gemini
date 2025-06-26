@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import "./Main.css";
+import { useContext } from "react";
 import { assets } from "../../../assets/assets/assets";
 import { Context } from "../../../context/Context";
+import "./Main.css";
 
 const Main = () => {
   const {
@@ -95,12 +95,15 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} alt="Gallery" />
               <img src={assets.mic_icon} alt="Mic" />
-              <img
-                onClick={handleSend}
-                src={assets.send_icon}
-                alt="Send"
-                style={{ cursor: "pointer" }}
-              />
+
+              {input ? (
+                <img
+                  onClick={handleSend}
+                  src={assets.send_icon}
+                  alt=""
+                  style={{ cursor: "pointer" }}
+                />
+              ) : null}
             </div>
           </div>
 

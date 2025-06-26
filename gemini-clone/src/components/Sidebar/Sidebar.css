@@ -61,3 +61,9 @@ background-color: #e2e6eb;
     padding-right: 10px;
     cursor: pointer;
 }
+@media(max-width:600px) {
+    .sidebar{
+        display: none;
+    }
+    
+}
