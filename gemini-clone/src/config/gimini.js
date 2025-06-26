@@ -4,15 +4,17 @@ import {
   HarmBlockThreshold,
 } from "@google/generative-ai";
 
+
 // Your actual Gemini API key
 const API_KEY = "AIzaSyAMbMCJ_CYTeHlmnDO5mLhNcFYaSp4w5Xo";
-const MODEL_NAME = "gemini-1.0-pro";
 
-// Main function to send prompt and get Gemini response
+
+const MODEL_NAME = "gemini-1.5-pro";  // or "gemini-1.0-pro" if your API key only supports that
+
+
 async function runChat(prompt) {
   try {
     const genAI = new GoogleGenerativeAI(API_KEY);
-
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
     const generationConfig = {
@@ -50,10 +52,14 @@ async function runChat(prompt) {
     const result = await chat.sendMessage(prompt);
     const response = result.response;
 
-    console.log(response.text());
-    return response.text(); // Optional: useful if calling from another file
+    // ✅ Fixed: added 'await' to parse text properly
+    const finalText = await response.text();
+    console.log("Gemini response:", finalText); // ✅ Optional: for debugging
+
+    return finalText;
   } catch (error) {
-    console.error( error.message);
+    console.error("Gemini API Error:", error.message);
+    return "Something went wrong. Please try again.";
   }
 }
 
