@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from './components/Sidebar/Sidebar'
-import Main from './components/Sidebar/Main/Main'
+import Main from './components/Sidebar/Main/Main.jsx';
+
 import ContextProvider from './context/Context'
 
 const App = () => {
