@@ -1,15 +1,12 @@
-import {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
+const API_KEY = import.meta.env.VITE_API_KEY;  // ✅ use env variable, not hardcoded
+console.log("From ENV:", import.meta.env.VITE_API_KEY);
 
-// Your actual Gemini API key
-const API_KEY = "AIzaSyAMbMCJ_CYTeHlmnDO5mLhNcFYaSp4w5Xo";
+// const MODEL_NAME = "gemini-1.5-pro";
+const MODEL_NAME = "gemini-1.5-flash";
+console.log("All ENV:", import.meta.env);
 
-
-const MODEL_NAME = "gemini-1.5-pro";  // or "gemini-1.0-pro" if your API key only supports that
 
 
 async function runChat(prompt) {
@@ -43,22 +40,20 @@ async function runChat(prompt) {
       },
     ];
 
-    const chat = await model.startChat({
+    // ✅ Simpler: generateContent instead of startChat
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig,
       safetySettings,
-      history: [],
     });
 
-    const result = await chat.sendMessage(prompt);
     const response = result.response;
-
-    // ✅ Fixed: added 'await' to parse text properly
-    const finalText = await response.text();
-    console.log("Gemini response:", finalText); // ✅ Optional: for debugging
+    const finalText = response.text(); // ✅ no await here
+    console.log("Gemini response:", finalText);
 
     return finalText;
   } catch (error) {
-    console.error("Gemini API Error:", error.message);
+    console.error("Gemini API Error:", error);
     return "Something went wrong. Please try again.";
   }
 }

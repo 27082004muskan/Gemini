@@ -1,7 +1,8 @@
 import React from 'react'
 import Sidebar from './components/Sidebar/Sidebar'
-import Main from './components/Sidebar/Main/main'
+
 import { Context } from './context/Context'
+import Main from './components/Sidebar/Main/main'
 
 
 
@@ -10,6 +11,8 @@ const App = () => {
   <>
   <Sidebar/>
   <Main/>
+
+
 
 
   </>
